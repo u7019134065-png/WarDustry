@@ -13,11 +13,51 @@ consumes: {
 }
 plans: [
   {
-    unit: wardustry-shahed
-    time: 1200
+    unit: wardustry-kamikaze-drone
+    time: 360
     requirements: [
-      silicon/40
+      silicon/15
+      lead/10
+    ]
+  }
+  {
+    unit: wardustry-recon-drone
+    time: 420
+    requirements: [
+      silicon/20
+      lead/15
+    ]
+  }
+  {
+    unit: wardustry-bomber-drone
+    time: 900
+    requirements: [
+      silicon/30
+      lead/25
+    ]
+  }
+  {
+    unit: wardustry-missile-drone
+    time: 840
+    requirements: [
+      silicon/35
+      lead/20
+    ]
+  }
+  {
+    unit: wardustry-gunship-drone
+    time: 1080
+    requirements: [
+      silicon/45
       lead/30
+    ]
+  }
+  {
+    unit: wardustry-interceptor-drone
+    time: 720
+    requirements: [
+      silicon/28
+      lead/22
     ]
   }
 ]

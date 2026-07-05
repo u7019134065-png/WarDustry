@@ -1,0 +1,31 @@
+type: flying
+name: Missile Drone
+health: 150
+hitSize: 12
+speed: 3.4
+range: 220
+itemCapacity: 0
+engineSize: 1.4
+targetAir: true
+targetGround: true
+weapons: [
+  {
+    name: "wardustry-missile-drone-missile"
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    mirror: false
+    reload: 42
+    bullet: {
+      type: BasicBulletType
+      damage: 36
+      speed: 5.8
+      lifetime: 45
+      width: 7
+      height: 7
+      homingPower: 0.08
+      homingRange: 90
+    }
+  }
+]

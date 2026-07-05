@@ -1,0 +1,33 @@
+type: flying
+name: Kamikaze Drone
+health: 90
+hitSize: 10
+speed: 4.5
+range: 28
+itemCapacity: 0
+engineSize: 1.2
+crashDamageMultiplier: 4.5
+targetAir: true
+targetGround: true
+circleTarget: false
+weapons: [
+  {
+    name: "wardustry-kamikaze-drone-warhead"
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    mirror: false
+    reload: 120
+    bullet: {
+      type: BasicBulletType
+      damage: 110
+      speed: 2.8
+      lifetime: 24
+      width: 8
+      height: 8
+      splashDamage: 60
+      splashDamageRadius: 22
+    }
+  }
+]

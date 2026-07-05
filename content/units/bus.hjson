@@ -1,0 +1,11 @@
+type: hover
+name: Bus
+health: 900
+hitSize: 19
+speed: 0.95
+range: 120
+armor: 6
+itemCapacity: 80
+engineSize: 1.6
+targetAir: false
+targetGround: false

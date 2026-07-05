@@ -1,0 +1,32 @@
+type: flying
+name: Bomber Drone
+health: 220
+hitSize: 13
+speed: 2.7
+range: 180
+itemCapacity: 0
+engineSize: 1.6
+targetAir: false
+targetGround: true
+circleTarget: true
+weapons: [
+  {
+    name: "wardustry-bomber-drone-bomb"
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    mirror: false
+    reload: 150
+    bullet: {
+      type: BasicBulletType
+      damage: 28
+      speed: 2.6
+      lifetime: 50
+      width: 9
+      height: 9
+      splashDamage: 110
+      splashDamageRadius: 28
+    }
+  }
+]

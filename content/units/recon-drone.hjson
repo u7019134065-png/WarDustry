@@ -1,0 +1,11 @@
+type: flying
+name: Recon Drone
+health: 70
+hitSize: 10
+speed: 4.8
+range: 260
+fogRadius: 220
+itemCapacity: 0
+engineSize: 1.0
+targetAir: false
+targetGround: false

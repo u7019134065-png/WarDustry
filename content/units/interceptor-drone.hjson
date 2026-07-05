@@ -1,0 +1,29 @@
+type: flying
+name: Interceptor Drone
+health: 140
+hitSize: 11
+speed: 4.2
+range: 210
+itemCapacity: 0
+engineSize: 1.3
+targetAir: true
+targetGround: false
+weapons: [
+  {
+    name: "wardustry-interceptor-drone-cannon"
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    mirror: false
+    reload: 14
+    bullet: {
+      type: BasicBulletType
+      damage: 8
+      speed: 7.0
+      lifetime: 32
+      width: 5
+      height: 5
+    }
+  }
+]
