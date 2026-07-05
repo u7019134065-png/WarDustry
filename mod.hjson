@@ -1,0 +1,35 @@
+# ============================================================
+#  WarDustry - mod metadata
+#  This file uses Hjson (https://hjson.github.io/), a superset
+#  of JSON. Comments and unquoted keys/strings are allowed.
+# ============================================================
+
+# Internal name used to reference this mod. Must be kebab-case
+# (lowercase, spaces replaced with "-") and contain no color codes.
+name: wardustry
+
+# Name shown in the in-game mod browser. May contain color markup.
+displayName: "[scarlet]War[white]Dustry"
+
+# Author(s) of the mod.
+author: "JSHON"
+
+# Description rendered in the in-game mod manager.
+# The localized version is applied at runtime from the bundles
+# (keys mod.wardustry.displayName / mod.wardustry.description) by
+# scripts/main.js, so this English text is only the fallback.
+description: "WarDustry is a military-tech content pack for Mindustry, focused on armored vehicles, heavy weaponry and modern warfare machinery. This is the base scaffold: metadata, folder structure and bilingual documentation are in place, with content to be added in future updates."
+
+# Semantic-ish version of the mod.
+version: "0.1"
+
+# Minimum game build required. Must be a number greater than 105.
+# 146 corresponds to the stable v7 line.
+minGameVersion: 146
+
+# Other mods this one depends on (by their internal name).
+dependencies: []
+
+# Whether the mod is hidden from the multiplayer sync/version check.
+# Content mods should stay visible (false).
+hidden: false

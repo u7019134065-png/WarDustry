@@ -1,0 +1,14 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Build artifacts / packaged mod
+*.zip
+!/**/sprites/**/*.zip
+
+# Python (sprite tooling, if added later)
+__pycache__/
+*.pyc
+.venv/
