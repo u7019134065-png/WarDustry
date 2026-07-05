@@ -1,0 +1,7 @@
+{
+  "name": "Steel",
+  "color": "646c70",
+  "hardness": 2,
+  "cost": 1.4,
+  "description": "Industrial steel used in military frames and armor."
+}

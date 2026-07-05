@@ -1,0 +1,25 @@
+{
+  "type": "MendProjector",
+  "name": "Repair Projector",
+  "category": "effect",
+  "size": 2,
+  "health": 280,
+  "requirements": [
+    "copper/70",
+    "lead/60",
+    "silicon/40",
+    "steel/10"
+  ],
+  "consumes": {
+    "power": 2.4,
+    "items": [
+      "silicon/20",
+      "titanium/16"
+    ]
+  },
+  "range": 78,
+  "reload": 220,
+  "healPercent": 14,
+  "useTime": 360,
+  "research": "mend-projector"
+}

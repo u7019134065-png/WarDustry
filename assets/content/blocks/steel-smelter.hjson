@@ -1,0 +1,26 @@
+{
+  "type": "GenericCrafter",
+  "name": "Steel Smelter",
+  "category": "crafting",
+  "size": 2,
+  "health": 300,
+  "requirements": [
+    "copper/80",
+    "lead/70",
+    "silicon/30",
+    "steel/8"
+  ],
+  "consumes": {
+    "power": 1.2,
+    "items": [
+      "copper/2",
+      "lead/1"
+    ]
+  },
+  "outputItem": {
+    "item": "steel",
+    "amount": 1
+  },
+  "craftTime": 80,
+  "research": "kiln"
+}

@@ -1,0 +1,32 @@
+{
+  "type": "flying",
+  "name": "Scout Drone",
+  "health": 160,
+  "hitSize": 10,
+  "speed": 3.1,
+  "armor": 0,
+  "range": 130,
+  "itemCapacity": 8,
+  "engineSize": 1.0,
+  "targetAir": true,
+  "targetGround": true,
+  "weapons": [
+    {
+      "name": "wardustry-scout-drone-pistol",
+      "x": 0,
+      "y": 0,
+      "top": true,
+      "rotate": true,
+      "mirror": false,
+      "reload": 22,
+      "bullet": {
+        "type": "BasicBulletType",
+        "damage": 8,
+        "speed": 4.4,
+        "lifetime": 30,
+        "width": 3,
+        "height": 4
+      }
+    }
+  ]
+}

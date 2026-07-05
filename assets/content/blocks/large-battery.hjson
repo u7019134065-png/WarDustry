@@ -1,0 +1,17 @@
+{
+  "type": "Battery",
+  "name": "Large Battery",
+  "category": "power",
+  "size": 3,
+  "health": 280,
+  "requirements": [
+    "lead/60",
+    "copper/80",
+    "steel/18",
+    "silicon/20"
+  ],
+  "consumes": {
+    "powerBuffered": 50000
+  },
+  "research": "battery-large"
+}

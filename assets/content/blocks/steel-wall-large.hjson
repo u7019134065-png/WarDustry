@@ -1,0 +1,12 @@
+{
+  "type": "Wall",
+  "name": "Large Steel Wall",
+  "category": "defense",
+  "size": 2,
+  "health": 1440,
+  "requirements": [
+    "steel/24",
+    "lead/32"
+  ],
+  "research": "steel-wall"
+}

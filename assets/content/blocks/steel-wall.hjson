@@ -1,0 +1,12 @@
+{
+  "type": "Wall",
+  "name": "Steel Wall",
+  "category": "defense",
+  "size": 1,
+  "health": 360,
+  "requirements": [
+    "steel/6",
+    "lead/8"
+  ],
+  "research": "copper-wall"
+}

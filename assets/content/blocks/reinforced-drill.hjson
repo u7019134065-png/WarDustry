@@ -1,0 +1,15 @@
+{
+  "type": "Drill",
+  "name": "Reinforced Drill",
+  "category": "production",
+  "size": 2,
+  "health": 260,
+  "requirements": [
+    "copper/70",
+    "lead/60",
+    "steel/12"
+  ],
+  "tier": 3,
+  "drillTime": 150,
+  "research": "pneumatic-drill"
+}

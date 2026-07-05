@@ -1,0 +1,32 @@
+{
+  "type": "hover",
+  "name": "Scout Vehicle",
+  "health": 260,
+  "hitSize": 12,
+  "speed": 1.9,
+  "armor": 1,
+  "range": 140,
+  "itemCapacity": 10,
+  "engineSize": 1.2,
+  "targetAir": true,
+  "targetGround": true,
+  "weapons": [
+    {
+      "name": "wardustry-scout-vehicle-cannon",
+      "x": 0,
+      "y": 0,
+      "top": true,
+      "rotate": true,
+      "mirror": false,
+      "reload": 18,
+      "bullet": {
+        "type": "BasicBulletType",
+        "damage": 12,
+        "speed": 4.4,
+        "lifetime": 34,
+        "width": 4,
+        "height": 5
+      }
+    }
+  ]
+}

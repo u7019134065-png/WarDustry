@@ -1,0 +1,22 @@
+{
+  "type": "ConsumeGenerator",
+  "name": "Plasma Turbine",
+  "category": "power",
+  "size": 2,
+  "health": 280,
+  "requirements": [
+    "copper/80",
+    "lead/60",
+    "silicon/30",
+    "steel/12"
+  ],
+  "consumes": {
+    "liquid": {
+      "liquid": "plasma-energy",
+      "amount": 0.15
+    }
+  },
+  "powerProduction": 2.4,
+  "itemDuration": 60,
+  "research": "solar-array"
+}

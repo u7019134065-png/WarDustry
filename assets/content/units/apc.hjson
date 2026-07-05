@@ -1,0 +1,32 @@
+{
+  "type": "hover",
+  "name": "APC",
+  "health": 720,
+  "hitSize": 16,
+  "speed": 1.35,
+  "armor": 4,
+  "range": 170,
+  "itemCapacity": 30,
+  "engineSize": 1.5,
+  "targetAir": true,
+  "targetGround": true,
+  "weapons": [
+    {
+      "name": "wardustry-apc-cannon",
+      "x": 0,
+      "y": 0,
+      "top": true,
+      "rotate": true,
+      "mirror": false,
+      "reload": 26,
+      "bullet": {
+        "type": "BasicBulletType",
+        "damage": 16,
+        "speed": 4.6,
+        "lifetime": 36,
+        "width": 5,
+        "height": 5
+      }
+    }
+  ]
+}

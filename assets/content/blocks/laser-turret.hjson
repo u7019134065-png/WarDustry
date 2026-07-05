@@ -1,0 +1,36 @@
+{
+  "type": "LaserTurret",
+  "name": "Laser Turret",
+  "category": "turret",
+  "size": 3,
+  "health": 420,
+  "requirements": [
+    "copper/110",
+    "lead/100",
+    "silicon/80",
+    "titanium/40",
+    "steel/20"
+  ],
+  "range": 260,
+  "reload": 90,
+  "rotateSpeed": 4.5,
+  "recoil": 2.0,
+  "consumes": {
+    "power": 4.5
+  },
+  "shootType": {
+    "type": "LaserBulletType",
+    "damage": 50,
+    "length": 220,
+    "width": 12,
+    "colors": [
+      "82ff66",
+      "8cff3a",
+      "ffffff"
+    ],
+    "lightningSpacing": 16,
+    "lightningDamage": 8,
+    "largeHit": true
+  },
+  "research": "lancer"
+}

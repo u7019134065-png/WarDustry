@@ -1,38 +1,78 @@
-type: UnitFactory
-name: Vehicle Factory
-category: units
-size: 3
-health: 420
-requirements: [
-  copper/150
-  lead/120
-  silicon/80
-  graphite/60
-]
-consumes: {
-  power: 3
-  items: [
-    silicon/40
-    lead/30
-  ]
+{
+  "type": "UnitFactory",
+  "name": "Vehicle Factory",
+  "category": "units",
+  "size": 3,
+  "health": 420,
+  "requirements": [
+    "copper/150",
+    "lead/120",
+    "silicon/80",
+    "graphite/60"
+  ],
+  "consumes": {
+    "power": 3,
+    "items": [
+      "silicon/40",
+      "lead/30"
+    ]
+  },
+  "plans": [
+    {
+      "unit": "wardustry-jeep",
+      "time": 780,
+      "requirements": [
+        "copper/60",
+        "lead/30"
+      ]
+    },
+    {
+      "unit": "wardustry-bus",
+      "time": 1320,
+      "requirements": [
+        "copper/140",
+        "lead/90",
+        "silicon/20"
+      ]
+    },
+    {
+      "unit": "wardustry-scout-vehicle",
+      "time": 900,
+      "requirements": [
+        "copper/70",
+        "lead/40",
+        "steel/10"
+      ]
+    },
+    {
+      "unit": "wardustry-apc",
+      "time": 1500,
+      "requirements": [
+        "copper/120",
+        "lead/80",
+        "steel/20"
+      ]
+    },
+    {
+      "unit": "wardustry-artillery-vehicle",
+      "time": 1800,
+      "requirements": [
+        "copper/150",
+        "lead/100",
+        "shell/20",
+        "steel/25"
+      ]
+    },
+    {
+      "unit": "wardustry-mbt",
+      "time": 2200,
+      "requirements": [
+        "copper/180",
+        "lead/140",
+        "steel/40",
+        "titanium/20"
+      ]
+    }
+  ],
+  "research": "ground-factory"
 }
-plans: [
-  {
-    unit: wardustry-jeep
-    time: 780
-    requirements: [
-      copper/60
-      lead/30
-    ]
-  }
-  {
-    unit: wardustry-bus
-    time: 1320
-    requirements: [
-      copper/140
-      lead/90
-      silicon/20
-    ]
-  }
-]
-research: ground-factory

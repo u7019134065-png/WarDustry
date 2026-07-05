@@ -1,0 +1,15 @@
+{
+  "type": "SolarGenerator",
+  "name": "Solar Array",
+  "category": "power",
+  "size": 2,
+  "health": 220,
+  "requirements": [
+    "copper/60",
+    "lead/40",
+    "silicon/20",
+    "steel/8"
+  ],
+  "powerProduction": 1.15,
+  "research": "solar-panel"
+}

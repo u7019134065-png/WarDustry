@@ -1,0 +1,13 @@
+{
+  "type": "Wall",
+  "name": "Large Reinforced Wall",
+  "category": "defense",
+  "size": 2,
+  "health": 2560,
+  "requirements": [
+    "steel/40",
+    "titanium/24",
+    "lead/32"
+  ],
+  "research": "reinforced-wall"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Shell",
+  "color": "b83c36",
+  "hardness": 1,
+  "cost": 1.1,
+  "description": "Standard artillery shell casing and penetrator."
+}

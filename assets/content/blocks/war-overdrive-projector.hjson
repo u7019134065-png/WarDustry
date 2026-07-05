@@ -1,0 +1,26 @@
+{
+  "type": "OverdriveProjector",
+  "name": "War Overdrive Projector",
+  "category": "effect",
+  "size": 3,
+  "health": 320,
+  "requirements": [
+    "copper/90",
+    "lead/70",
+    "silicon/50",
+    "steel/14"
+  ],
+  "consumes": {
+    "power": 2.6,
+    "items": [
+      "silicon/20",
+      "phase-fabric/8"
+    ]
+  },
+  "range": 92,
+  "speedBoost": 1.45,
+  "speedBoostPhase": 0.9,
+  "useTime": 400,
+  "phaseRangeBoost": 24,
+  "research": "overdrive-projector"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "ConsumeGenerator",
+  "name": "Diesel Generator",
+  "category": "power",
+  "size": 2,
+  "health": 260,
+  "requirements": [
+    "copper/45",
+    "lead/35",
+    "steel/8"
+  ],
+  "consumes": {
+    "item": "coal"
+  },
+  "itemDuration": 120,
+  "powerProduction": 1.2,
+  "research": "combustion-generator"
+}

@@ -1,0 +1,34 @@
+{
+  "type": "hover",
+  "name": "Artillery Vehicle",
+  "health": 620,
+  "hitSize": 17,
+  "speed": 1.05,
+  "armor": 3,
+  "range": 310,
+  "itemCapacity": 16,
+  "engineSize": 1.5,
+  "targetAir": true,
+  "targetGround": true,
+  "weapons": [
+    {
+      "name": "wardustry-artillery-vehicle-howitzer",
+      "x": 0,
+      "y": 0,
+      "top": true,
+      "rotate": true,
+      "mirror": false,
+      "reload": 60,
+      "bullet": {
+        "type": "BasicBulletType",
+        "damage": 90,
+        "speed": 3.0,
+        "lifetime": 80,
+        "width": 8,
+        "height": 10,
+        "splashDamage": 70,
+        "splashDamageRadius": 30
+      }
+    }
+  ]
+}

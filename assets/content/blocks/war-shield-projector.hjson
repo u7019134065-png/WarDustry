@@ -1,0 +1,27 @@
+{
+  "type": "ForceProjector",
+  "name": "War Shield Projector",
+  "category": "effect",
+  "size": 3,
+  "health": 360,
+  "requirements": [
+    "copper/100",
+    "lead/80",
+    "silicon/60",
+    "titanium/40",
+    "steel/18"
+  ],
+  "consumes": {
+    "power": 3.2,
+    "items": [
+      "silicon/30",
+      "titanium/20"
+    ]
+  },
+  "radius": 108,
+  "shieldHealth": 1300,
+  "cooldownNormal": 1.9,
+  "cooldownLiquid": 1.6,
+  "cooldownBrokenBase": 0.35,
+  "research": "force-projector"
+}

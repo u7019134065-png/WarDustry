@@ -1,0 +1,15 @@
+{
+  "type": "ArmoredConveyor",
+  "name": "War Conveyor",
+  "category": "distribution",
+  "size": 1,
+  "health": 180,
+  "speed": 0.08,
+  "displayedSpeed": 11,
+  "requirements": [
+    "copper/14",
+    "lead/10",
+    "steel/1"
+  ],
+  "research": "conveyor"
+}

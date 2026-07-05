@@ -1,0 +1,15 @@
+{
+  "type": "Junction",
+  "name": "Armored Junction",
+  "category": "distribution",
+  "size": 1,
+  "health": 180,
+  "speed": 18,
+  "capacity": 8,
+  "requirements": [
+    "copper/14",
+    "lead/10",
+    "steel/1"
+  ],
+  "research": "war-conveyor"
+}

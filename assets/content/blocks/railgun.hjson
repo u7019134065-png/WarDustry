@@ -1,0 +1,35 @@
+{
+  "type": "PowerTurret",
+  "name": "Railgun",
+  "category": "turret",
+  "size": 3,
+  "health": 460,
+  "requirements": [
+    "copper/120",
+    "lead/100",
+    "silicon/80",
+    "titanium/40",
+    "steel/20"
+  ],
+  "range": 300,
+  "reload": 90,
+  "rotateSpeed": 4,
+  "recoil": 3.5,
+  "consumes": {
+    "power": 6.5
+  },
+  "shootType": {
+    "type": "BasicBulletType",
+    "damage": 165,
+    "speed": 10.5,
+    "lifetime": 48,
+    "width": 8,
+    "height": 8,
+    "pierce": true,
+    "pierceCap": 3,
+    "collidesTiles": true,
+    "collidesAir": true,
+    "collidesGround": true
+  },
+  "research": "lancer"
+}

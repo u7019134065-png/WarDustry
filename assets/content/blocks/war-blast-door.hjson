@@ -1,0 +1,13 @@
+{
+  "type": "Door",
+  "name": "War Blast Door",
+  "category": "defense",
+  "size": 2,
+  "health": 900,
+  "requirements": [
+    "steel/20",
+    "titanium/12",
+    "lead/20"
+  ],
+  "research": "reinforced-wall"
+}

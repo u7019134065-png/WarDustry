@@ -1,0 +1,19 @@
+{
+  "type": "Drill",
+  "name": "Pneumatic Drill II",
+  "category": "production",
+  "size": 3,
+  "health": 460,
+  "requirements": [
+    "copper/120",
+    "lead/100",
+    "steel/24",
+    "titanium/16"
+  ],
+  "tier": 5,
+  "drillTime": 78,
+  "consumes": {
+    "power": 1.4
+  },
+  "research": "reinforced-drill"
+}

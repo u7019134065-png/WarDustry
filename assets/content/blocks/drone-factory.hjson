@@ -1,64 +1,108 @@
-type: UnitFactory
-name: Drone Factory
-category: units
-size: 3
-health: 360
-requirements: [
-  copper/120
-  lead/100
-  silicon/80
-]
-consumes: {
-  power: 2.5
+{
+  "type": "UnitFactory",
+  "name": "Drone Factory",
+  "category": "units",
+  "size": 3,
+  "health": 420,
+  "requirements": [
+    "copper/120",
+    "lead/100",
+    "silicon/80"
+  ],
+  "consumes": {
+    "power": 2.5,
+    "items": [
+      "silicon/40",
+      "lead/30"
+    ]
+  },
+  "plans": [
+    {
+      "unit": "wardustry-shahed",
+      "time": 1200,
+      "requirements": [
+        "silicon/40",
+        "lead/30"
+      ]
+    },
+    {
+      "unit": "wardustry-kamikaze-drone",
+      "time": 720,
+      "requirements": [
+        "silicon/24",
+        "lead/18"
+      ]
+    },
+    {
+      "unit": "wardustry-recon-drone",
+      "time": 840,
+      "requirements": [
+        "silicon/20",
+        "lead/20"
+      ]
+    },
+    {
+      "unit": "wardustry-bomber-drone",
+      "time": 1320,
+      "requirements": [
+        "silicon/50",
+        "lead/40",
+        "graphite/20"
+      ]
+    },
+    {
+      "unit": "wardustry-missile-drone",
+      "time": 1500,
+      "requirements": [
+        "silicon/60",
+        "lead/40",
+        "titanium/20"
+      ]
+    },
+    {
+      "unit": "wardustry-gunship-drone",
+      "time": 1680,
+      "requirements": [
+        "silicon/80",
+        "lead/60",
+        "titanium/40"
+      ]
+    },
+    {
+      "unit": "wardustry-interceptor-drone",
+      "time": 1440,
+      "requirements": [
+        "silicon/60",
+        "lead/45",
+        "copper/30"
+      ]
+    },
+    {
+      "unit": "wardustry-emp-drone",
+      "time": 1080,
+      "requirements": [
+        "silicon/35",
+        "lead/25",
+        "thorium/10"
+      ]
+    },
+    {
+      "unit": "wardustry-heavy-gunship",
+      "time": 2100,
+      "requirements": [
+        "silicon/120",
+        "titanium/60",
+        "thorium/20"
+      ]
+    },
+    {
+      "unit": "wardustry-scout-drone",
+      "time": 660,
+      "requirements": [
+        "silicon/18",
+        "lead/12"
+      ]
+    }
+  ],
+  "research": "air-factory"
 }
-plans: [
-  {
-    unit: wardustry-kamikaze-drone
-    time: 360
-    requirements: [
-      silicon/15
-      lead/10
-    ]
-  }
-  {
-    unit: wardustry-recon-drone
-    time: 420
-    requirements: [
-      silicon/20
-      lead/15
-    ]
-  }
-  {
-    unit: wardustry-bomber-drone
-    time: 900
-    requirements: [
-      silicon/30
-      lead/25
-    ]
-  }
-  {
-    unit: wardustry-missile-drone
-    time: 840
-    requirements: [
-      silicon/35
-      lead/20
-    ]
-  }
-  {
-    unit: wardustry-gunship-drone
-    time: 1080
-    requirements: [
-      silicon/45
-      lead/30
-    ]
-  }
-  {
-    unit: wardustry-interceptor-drone
-    time: 720
-    requirements: [
-      silicon/28
-      lead/22
-    ]
-  }
-]
-research: air-factory

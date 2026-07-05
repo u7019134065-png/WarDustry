@@ -1,0 +1,17 @@
+{
+  "type": "ItemBridge",
+  "name": "Armored Bridge",
+  "category": "distribution",
+  "size": 1,
+  "health": 200,
+  "range": 7,
+  "transportTime": 2,
+  "bridgeWidth": 6.5,
+  "requirements": [
+    "copper/30",
+    "lead/18",
+    "steel/2",
+    "graphite/2"
+  ],
+  "research": "war-conveyor"
+}

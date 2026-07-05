@@ -75,6 +75,15 @@ def weapon_icon(size, kind='default'):
         d.polygon([(c, 2), (size - 4, c), (c, size - 4), (4, c)], fill=STEEL_DARK, outline=BLACK)
         d.polygon([(c, 6), (size - 8, c), (c, size - 8), (8, c)], fill=STEEL)
         d.ellipse((c - 3, c - 3, c + 3, c + 3), fill=SCARLET, outline=BLACK)
+    elif kind == 'cannon':
+        d.rounded_rectangle((4, 8, size - 4, size - 8), radius=3, fill=STEEL_DARK, outline=BLACK)
+        d.rectangle((size - 8, c - 2, size - 3, c + 2), fill=STEEL_LIGHT)
+        d.rectangle((3, c - 1, 9, c + 1), fill=OLIVE_LIGHT)
+    elif kind == 'pulse':
+        d.ellipse((4, 4, size - 4, size - 4), fill=(64, 244, 255, 255), outline=BLACK)
+        d.ellipse((8, 8, size - 8, size - 8), fill=(255, 72, 200, 255))
+        d.line((c, 5, c, size - 5), fill=WHITE, width=2)
+        d.line((5, c, size - 5, c), fill=WHITE, width=2)
     else:
         d.polygon([(c, 2), (size - 4, c), (c, size - 4), (4, c)], fill=STEEL_DARK, outline=BLACK)
         d.ellipse((c - 3, c - 3, c + 3, c + 3), fill=SCARLET, outline=BLACK)
@@ -539,6 +548,169 @@ def make_armored_conveyor_frame(blend, frame):
     d.ellipse((12, 8, 20, 24), outline=(64, 244, 255, 120), width=1)
     return img
 
+def make_wall_icon(size, reinforced=False):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    m = 4 if size <= 32 else 6
+    body = STEEL_DARK if not reinforced else (44, 48, 52, 255)
+    accent = OLIVE if not reinforced else OLIVE_LIGHT
+    d.rounded_rectangle((m, m, size - m, size - m), radius=6, fill=body, outline=BLACK, width=2)
+    d.rectangle((m + 4, m + 4, size - m - 4, size - m - 4), fill=STEEL)
+    d.polygon([(size//2, m + 4), (size - m - 4, size//2), (size//2, size - m - 4), (m + 4, size//2)], fill=accent, outline=BLACK)
+    d.rectangle((size//2 - 2, m + 8, size//2 + 2, size - m - 8), fill=SCARLET)
+    for x in range(m + 6, size - m - 5, 10 if size <= 32 else 16):
+        for y in range(m + 6, size - m - 5, 10 if size <= 32 else 16):
+            d.ellipse((x, y, x + 2, y + 2), fill=BLACK)
+    return img
+
+def make_door_closed(size):
+    img = make_wall_icon(size, reinforced=True)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.rectangle((c - 3, 4, c + 3, size - 4), fill=SCARLET_DARK)
+    d.rectangle((4, c - 3, size - 4, c + 3), fill=OLIVE_LIGHT)
+    return img
+
+def make_door_open(size):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    m = 4 if size <= 32 else 6
+    d.rounded_rectangle((m, m, size - m, size - m), radius=6, fill=STEEL_DARK, outline=BLACK, width=2)
+    d.polygon([(m + 4, m + 8), (size//2 - 6, m + 8), (size//2 - 10, size - m - 8), (m + 2, size - m - 8)], fill=STEEL)
+    d.polygon([(size - m - 4, m + 8), (size//2 + 6, m + 8), (size//2 + 10, size - m - 8), (size - m - 2, size - m - 8)], fill=STEEL)
+    d.rectangle((size//2 - 3, 4, size//2 + 3, size - 4), fill=SCARLET)
+    return img
+
+def make_bridge_end(size):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    m = 4
+    d.rounded_rectangle((m, m, size - m, size - m), radius=5, fill=STEEL_DARK, outline=BLACK, width=2)
+    d.rectangle((m + 4, m + 4, size - m - 4, size - m - 4), fill=STEEL)
+    d.polygon([(size//2, 4), (size - 4, size//2), (size//2, size - 4), (4, size//2)], fill=OLIVE_LIGHT, outline=BLACK)
+    d.rectangle((size//2 - 2, 8, size//2 + 2, size - 8), fill=SCARLET)
+    return img
+
+def make_bridge_bridge(size):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    d.rectangle((3, 11, size - 3, size - 11), fill=STEEL_DARK, outline=BLACK)
+    d.rectangle((5, 13, size - 5, size - 13), fill=STEEL)
+    d.rectangle((9, 9, size - 9, 11), fill=OLIVE)
+    d.rectangle((9, size - 11, size - 9, size - 9), fill=OLIVE)
+    for x in range(6, size - 6, 8):
+        d.rectangle((x, 14, x + 2, size - 14), fill=SCARLET)
+    return img
+
+def make_bridge_arrow(size):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.polygon([(c, 5), (size - 6, c), (c, size - 5), (6, c)], fill=(64, 244, 255, 255), outline=BLACK)
+    d.polygon([(c, 9), (size - 12, c), (c, size - 9), (12, c)], fill=SCARLET)
+    return img
+
+def make_power_block(size, accent, core=(64, 244, 255, 255)):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    m = 6 if size <= 64 else 8
+    d.rounded_rectangle((m, m, size - m, size - m), radius=8, fill=STEEL_DARK, outline=BLACK, width=2)
+    d.rectangle((m + 5, m + 5, size - m - 5, size - m - 5), fill=STEEL)
+    d.polygon([(size//2, m + 4), (size - m - 4, size//2), (size//2, size - m - 4), (m + 4, size//2)], fill=accent, outline=BLACK)
+    d.ellipse((size//2 - 8, size//2 - 8, size//2 + 8, size//2 + 8), fill=core, outline=BLACK)
+    d.rectangle((size//2 - 2, m + 8, size//2 + 2, size - m - 8), fill=SCARLET)
+    return img
+
+def make_power_top(size, accent):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.ellipse((c - 18, c - 18, c + 18, c + 18), outline=accent, width=4)
+    d.line((c, 10, c, size - 10), fill=SCARLET, width=3)
+    d.line((10, c, size - 10, c), fill=SCARLET, width=3)
+    return img
+
+def make_turret_base(size, accent, variant='cannon'):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    m = 6 if size <= 64 else 8
+    d.rounded_rectangle((m, m + 4, size - m, size - m), radius=8, fill=STEEL_DARK, outline=BLACK, width=2)
+    d.rectangle((m + 6, m + 10, size - m - 6, size - m - 10), fill=STEEL)
+    d.polygon([(size//2, m + 6), (size - m - 8, size//2), (size//2, size - m - 8), (m + 8, size//2)], fill=accent, outline=BLACK)
+    if variant == 'laser':
+        d.rectangle((size//2 - 2, m + 4, size//2 + 2, size//2 + 8), fill=WHITE)
+        d.rectangle((size//2 - 12, size//2 - 4, size//2 + 12, size//2 + 4), fill=SCARLET)
+    elif variant == 'tesla':
+        d.ellipse((size//2 - 10, size//2 - 10, size//2 + 10, size//2 + 10), outline=(136, 255, 42, 255), width=3)
+        d.line((size//2, size//2 - 10, size//2, size//2 + 10), fill=SCARLET, width=2)
+        d.line((size//2 - 10, size//2, size//2 + 10, size//2), fill=SCARLET, width=2)
+    elif variant == 'plasma':
+        d.ellipse((size//2 - 8, size//2 - 8, size//2 + 8, size//2 + 8), fill=(64, 244, 255, 255), outline=BLACK)
+        d.ellipse((size//2 - 4, size//2 - 4, size//2 + 4, size//2 + 4), fill=(255, 72, 200, 255))
+    else:
+        d.rectangle((size//2 - 14, size//2 - 6, size//2 + 14, size//2 + 4), fill=accent)
+        d.rectangle((size//2 + 10, size//2 - 2, size - m - 4, size//2 + 2), fill=SCARLET)
+    return img
+
+def make_turret_top(size, accent, variant='cannon'):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.ellipse((c - 18, c - 18, c + 18, c + 18), outline=accent, width=4)
+    if variant == 'laser':
+        d.rectangle((c - 4, 8, c + 4, size - 8), fill=WHITE)
+        d.rectangle((8, c - 4, size - 8, c + 4), fill=SCARLET)
+    elif variant == 'tesla':
+        d.line((c, 8, c, size - 8), fill=(136, 255, 42, 255), width=2)
+        d.line((8, c, size - 8, c), fill=(136, 255, 42, 255), width=2)
+    elif variant == 'plasma':
+        d.ellipse((c - 14, c - 14, c + 14, c + 14), outline=(64, 244, 255, 255), width=3)
+        d.line((c, 10, c, size - 10), fill=(255, 72, 200, 255), width=2)
+    else:
+        d.rectangle((c - 12, c - 2, c + 12, c + 2), fill=SCARLET)
+        d.line((c - 16, c, c + 16, c), fill=OLIVE_LIGHT, width=2)
+    return img
+
+def make_hover_vehicle(size, variant='scout'):
+    img = canvas(size)
+    glow = (118, 132, 78, 60) if variant in ('scout', 'apc') else (184, 52, 46, 60)
+    img = overlay(img, layer_glow(size, (8, 12, size - 8, size - 10), glow, 7))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.rounded_rectangle((10, 20, size - 10, size - 14), radius=6, fill=STEEL_DARK, outline=BLACK, width=2)
+    d.polygon([(c, 8), (size - 18, 18), (size - 22, 30), (c, 24), (22, 30), (18, 18)], fill=OLIVE, outline=BLACK)
+    d.rectangle((c - 8, 20, c + 8, 32), fill=STEEL)
+    d.rectangle((c - 14, 32, c + 14, 38), fill=STEEL_LIGHT)
+    if variant == 'scout':
+        d.rectangle((c - 2, 12, c + 2, 20), fill=SCARLET)
+    elif variant == 'apc':
+        d.rectangle((c - 10, 14, c + 10, 28), fill=STEEL_LIGHT)
+        d.rectangle((c - 4, 16, c + 4, 26), fill=OLIVE_LIGHT)
+    elif variant == 'artillery':
+        d.rectangle((c - 4, 10, c + 4, 30), fill=SCARLET)
+        d.ellipse((c - 10, 30, c + 10, 44), fill=SAND, outline=BLACK)
+    else:
+        d.rectangle((c - 8, 12, c + 8, 26), fill=SCARLET)
+        d.rectangle((c - 16, 26, c + 16, 30), fill=OLIVE_LIGHT)
+    for x in (14, size - 14):
+        d.ellipse((x - 5, 34, x + 5, 44), fill=BLACK)
+        d.ellipse((x - 3, 36, x + 3, 42), fill=STEEL)
+    return img
+
+def make_emp_drone(size=64):
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (12, 10, 52, 38), (64, 244, 255, 70), 7))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.polygon([(c, 10), (50, 22), (44, 34), (c, 46), (20, 34), (14, 22)], fill=STEEL_DARK, outline=BLACK)
+    d.polygon([(c, 14), (46, 23), (41, 32), (c, 42), (23, 32), (18, 23)], fill=STEEL)
+    d.rectangle((c - 2, 8, c + 2, 12), fill=(64, 244, 255, 255))
+    d.line((c, 8, c, 2), fill=(255, 72, 200, 255), width=2)
+    d.polygon([(18, 26), (10, 30), (12, 33), (20, 29)], fill=OLIVE_LIGHT, outline=BLACK)
+    d.polygon([(46, 26), (54, 30), (52, 33), (44, 29)], fill=OLIVE_LIGHT, outline=BLACK)
+    d.ellipse((c - 4, 38, c + 4, 44), fill=(64, 244, 255, 255), outline=BLACK)
+    return img
+
 def main():
     save(make_plasma_liquid(), 'sprites/liquids/plasma-energy.png')
     save(make_uranium_item(), 'sprites/items/uranium.png')
@@ -607,7 +779,83 @@ def main():
 
     for blend in range(7):
         for frame in range(4):
-            save(make_armored_conveyor_frame(blend, frame), f'sprites/blocks/armored-conveyor-{blend}-{frame}.png')
+            save(make_armored_conveyor_frame(blend, frame), f'sprites/blocks/war-conveyor-{blend}-{frame}.png')
+
+    save(make_wall_icon(32), 'sprites/blocks/steel-wall.png')
+    save(make_wall_icon(64), 'sprites/blocks/steel-wall-large.png')
+    save(make_wall_icon(32, reinforced=True), 'sprites/blocks/reinforced-wall.png')
+    save(make_wall_icon(64, reinforced=True), 'sprites/blocks/reinforced-wall-large.png')
+    save(make_door_closed(64), 'sprites/blocks/war-blast-door.png')
+    save(make_door_open(64), 'sprites/blocks/war-blast-door-open.png')
+
+    save(make_bridge_end(32), 'sprites/blocks/armored-bridge-end.png')
+    save(make_bridge_bridge(32), 'sprites/blocks/armored-bridge-bridge.png')
+    save(make_bridge_arrow(32), 'sprites/blocks/armored-bridge-arrow.png')
+
+    save(make_power_block(64, OLIVE), 'sprites/blocks/diesel-generator.png')
+    save(make_power_top(64, OLIVE_LIGHT), 'sprites/blocks/diesel-generator-top.png')
+    save(make_power_block(64, (64, 244, 255, 255), (255, 220, 96, 255)), 'sprites/blocks/solar-array.png')
+    save(make_power_top(64, (64, 244, 255, 255)), 'sprites/blocks/solar-array-top.png')
+    save(make_power_block(96, SCARLET, (255, 160, 64, 255)), 'sprites/blocks/large-battery.png')
+    save(make_power_top(96, SCARLET), 'sprites/blocks/large-battery-top.png')
+    save(make_power_block(64, (255, 72, 200, 255), (64, 244, 255, 255)), 'sprites/blocks/plasma-turbine.png')
+    save(make_power_top(64, (255, 72, 200, 255)), 'sprites/blocks/plasma-turbine-top.png')
+    save(make_power_block(64, OLIVE, (118, 132, 78, 255)), 'sprites/blocks/repair-projector.png')
+    save(make_power_top(64, OLIVE_LIGHT), 'sprites/blocks/repair-projector-top.png')
+    save(make_power_block(96, OLIVE, (136, 255, 42, 255)), 'sprites/blocks/war-shield-projector.png')
+    save(make_power_top(96, (136, 255, 42, 255)), 'sprites/blocks/war-shield-projector-top.png')
+    save(make_power_block(96, SCARLET, (255, 180, 72, 255)), 'sprites/blocks/war-overdrive-projector.png')
+    save(make_power_top(96, SCARLET), 'sprites/blocks/war-overdrive-projector-top.png')
+
+    save(make_drill_base(64), 'sprites/blocks/reinforced-drill.png')
+    save(make_drill_rotator(64), 'sprites/blocks/reinforced-drill-rotator.png')
+    save(make_drill_top(64), 'sprites/blocks/reinforced-drill-top.png')
+    save(make_drill_base(96, powered=True), 'sprites/blocks/pneumatic-drill-ii.png')
+    save(make_drill_rotator(96, powered=True), 'sprites/blocks/pneumatic-drill-ii-rotator.png')
+    save(make_drill_top(96, powered=True), 'sprites/blocks/pneumatic-drill-ii-top.png')
+    save(make_factory_base(64, 'drone'), 'sprites/blocks/steel-smelter.png')
+    save(make_factory_top(64, 'drone'), 'sprites/blocks/steel-smelter-top.png')
+    save(make_factory_base(96, 'vehicle'), 'sprites/blocks/munitions-factory.png')
+    save(make_factory_top(96, 'vehicle'), 'sprites/blocks/munitions-factory-top.png')
+
+    save(make_turret_base(64, OLIVE, 'cannon'), 'sprites/blocks/autocannon.png')
+    save(make_turret_top(64, OLIVE, 'cannon'), 'sprites/blocks/autocannon-top.png')
+    save(make_turret_base(64, OLIVE_LIGHT, 'cannon'), 'sprites/blocks/flak-gun.png')
+    save(make_turret_top(64, OLIVE_LIGHT, 'cannon'), 'sprites/blocks/flak-gun-top.png')
+    save(make_turret_base(96, SCARLET, 'cannon'), 'sprites/blocks/railgun.png')
+    save(make_turret_top(96, SCARLET, 'cannon'), 'sprites/blocks/railgun-top.png')
+    save(make_turret_base(96, SCARLET, 'cannon'), 'sprites/blocks/missile-battery.png')
+    save(make_turret_top(96, SCARLET, 'cannon'), 'sprites/blocks/missile-battery-top.png')
+    save(make_turret_base(96, OLIVE, 'cannon'), 'sprites/blocks/mortar.png')
+    save(make_turret_top(96, OLIVE, 'cannon'), 'sprites/blocks/mortar-top.png')
+    save(make_turret_base(64, (136, 255, 42, 255), 'tesla'), 'sprites/blocks/tesla-turret.png')
+    save(make_turret_top(64, (136, 255, 42, 255), 'tesla'), 'sprites/blocks/tesla-turret-top.png')
+    save(make_turret_base(96, (64, 244, 255, 255), 'laser'), 'sprites/blocks/laser-turret.png')
+    save(make_turret_top(96, (64, 244, 255, 255), 'laser'), 'sprites/blocks/laser-turret-top.png')
+    save(make_turret_base(96, (255, 72, 200, 255), 'plasma'), 'sprites/blocks/plasma-turret.png')
+    save(make_turret_top(96, (255, 72, 200, 255), 'plasma'), 'sprites/blocks/plasma-turret-top.png')
+
+    save(make_hover_vehicle(64, 'scout'), 'sprites/units/scout-vehicle.png')
+    save(cell_drone(64, 14, 10), 'sprites/units/scout-vehicle-cell.png')
+    save(weapon_icon(24, 'autocannon'), 'sprites/units/weapons/wardustry-scout-vehicle-cannon.png')
+    save(make_hover_vehicle(64, 'apc'), 'sprites/units/apc.png')
+    save(cell_drone(64, 15, 10), 'sprites/units/apc-cell.png')
+    save(weapon_icon(24, 'autocannon'), 'sprites/units/weapons/wardustry-apc-cannon.png')
+    save(make_hover_vehicle(96, 'artillery'), 'sprites/units/artillery-vehicle.png')
+    save(cell_drone(96, 20, 14), 'sprites/units/artillery-vehicle-cell.png')
+    save(weapon_icon(24, 'cannon'), 'sprites/units/weapons/wardustry-artillery-vehicle-howitzer.png')
+    save(make_hover_vehicle(96, 'mbt'), 'sprites/units/mbt.png')
+    save(cell_drone(96, 22, 15), 'sprites/units/mbt-cell.png')
+    save(weapon_icon(24, 'cannon'), 'sprites/units/weapons/wardustry-mbt-cannon.png')
+    save(make_gunship_body(64), 'sprites/units/heavy-gunship.png')
+    save(cell_drone(64, 15, 11), 'sprites/units/heavy-gunship-cell.png')
+    save(weapon_icon(24, 'autocannon'), 'sprites/units/weapons/wardustry-heavy-gunship-autocannon.png')
+    save(make_emp_drone(64), 'sprites/units/emp-drone.png')
+    save(cell_drone(64, 14, 10), 'sprites/units/emp-drone-cell.png')
+    save(weapon_icon(24, 'pulse'), 'sprites/units/weapons/wardustry-emp-drone-emitter.png')
+    save(make_recon_body(64), 'sprites/units/scout-drone.png')
+    save(cell_drone(64, 14, 10), 'sprites/units/scout-drone-cell.png')
+    save(weapon_icon(24, 'antiair'), 'sprites/units/weapons/wardustry-scout-drone-pistol.png')
 
 if __name__ == '__main__':
     main()

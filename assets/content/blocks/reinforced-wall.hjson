@@ -1,0 +1,13 @@
+{
+  "type": "Wall",
+  "name": "Reinforced Wall",
+  "category": "defense",
+  "size": 1,
+  "health": 640,
+  "requirements": [
+    "steel/10",
+    "titanium/6",
+    "lead/8"
+  ],
+  "research": "steel-wall"
+}

@@ -1,0 +1,33 @@
+{
+  "type": "LiquidTurret",
+  "name": "Plasma Turret",
+  "category": "turret",
+  "size": 3,
+  "health": 380,
+  "requirements": [
+    "copper/120",
+    "lead/100",
+    "silicon/90",
+    "steel/20"
+  ],
+  "range": 230,
+  "reload": 30,
+  "rotateSpeed": 6,
+  "recoil": 1.8,
+  "consumes": {
+    "power": 2.8
+  },
+  "ammoTypes": {
+    "plasma-energy": {
+      "type": "BasicBulletType",
+      "damage": 26,
+      "speed": 5.5,
+      "lifetime": 42,
+      "width": 7,
+      "height": 7,
+      "status": "burning",
+      "statusDuration": 120
+    }
+  },
+  "research": "wave"
+}

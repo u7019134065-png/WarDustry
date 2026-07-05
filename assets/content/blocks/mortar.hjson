@@ -1,0 +1,33 @@
+{
+  "type": "ItemTurret",
+  "name": "Mortar",
+  "category": "turret",
+  "size": 3,
+  "health": 340,
+  "requirements": [
+    "copper/90",
+    "lead/80",
+    "silicon/40",
+    "steel/12"
+  ],
+  "range": 280,
+  "reload": 70,
+  "rotateSpeed": 3.2,
+  "recoil": 3.0,
+  "consumes": {
+    "power": 1.6
+  },
+  "ammoTypes": {
+    "shell": {
+      "type": "BasicBulletType",
+      "damage": 72,
+      "speed": 2.8,
+      "lifetime": 92,
+      "width": 9,
+      "height": 11,
+      "splashDamage": 60,
+      "splashDamageRadius": 30
+    }
+  },
+  "research": "hail"
+}

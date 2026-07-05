@@ -1,0 +1,33 @@
+{
+  "type": "ItemTurret",
+  "name": "Flak Gun",
+  "category": "turret",
+  "size": 2,
+  "health": 280,
+  "requirements": [
+    "copper/80",
+    "lead/70",
+    "silicon/30",
+    "steel/8"
+  ],
+  "range": 210,
+  "reload": 24,
+  "rotateSpeed": 8,
+  "recoil": 1.2,
+  "consumes": {
+    "power": 1.8
+  },
+  "ammoTypes": {
+    "lead": {
+      "type": "BasicBulletType",
+      "damage": 8,
+      "speed": 6.2,
+      "lifetime": 34,
+      "width": 4,
+      "height": 4,
+      "splashDamage": 10,
+      "splashDamageRadius": 12
+    }
+  },
+  "research": "scatter"
+}

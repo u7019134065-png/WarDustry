@@ -1,0 +1,14 @@
+{
+  "type": "Router",
+  "name": "Armored Router",
+  "category": "distribution",
+  "size": 1,
+  "health": 140,
+  "speed": 7,
+  "requirements": [
+    "copper/10",
+    "lead/8",
+    "steel/1"
+  ],
+  "research": "war-conveyor"
+}

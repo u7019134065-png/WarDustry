@@ -1,0 +1,35 @@
+{
+  "type": "ItemTurret",
+  "name": "Missile Battery",
+  "category": "turret",
+  "size": 3,
+  "health": 360,
+  "requirements": [
+    "copper/100",
+    "lead/90",
+    "silicon/70",
+    "steel/16"
+  ],
+  "range": 260,
+  "reload": 45,
+  "rotateSpeed": 5,
+  "recoil": 2.2,
+  "consumes": {
+    "power": 2.2
+  },
+  "ammoTypes": {
+    "silicon": {
+      "type": "BasicBulletType",
+      "damage": 34,
+      "speed": 4.0,
+      "lifetime": 58,
+      "width": 6,
+      "height": 8,
+      "homingPower": 0.08,
+      "homingRange": 80,
+      "splashDamage": 18,
+      "splashDamageRadius": 18
+    }
+  },
+  "research": "swarmer"
+}

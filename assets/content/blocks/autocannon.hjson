@@ -1,0 +1,31 @@
+{
+  "type": "ItemTurret",
+  "name": "Autocannon",
+  "category": "turret",
+  "size": 2,
+  "health": 260,
+  "requirements": [
+    "copper/70",
+    "lead/60",
+    "silicon/20",
+    "steel/8"
+  ],
+  "range": 190,
+  "reload": 18,
+  "rotateSpeed": 6.5,
+  "recoil": 1.4,
+  "consumes": {
+    "power": 1.5
+  },
+  "ammoTypes": {
+    "shell": {
+      "type": "BasicBulletType",
+      "damage": 18,
+      "speed": 5.2,
+      "lifetime": 38,
+      "width": 5,
+      "height": 6
+    }
+  },
+  "research": "duo"
+}
