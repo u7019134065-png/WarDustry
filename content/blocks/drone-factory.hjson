@@ -1,0 +1,24 @@
+type: UnitFactory
+name: Drone Factory
+category: units
+size: 3
+health: 360
+requirements: [
+  copper/120
+  lead/100
+  silicon/80
+]
+consumes: {
+  power: 2.5
+}
+plans: [
+  {
+    unit: wardustry-shahed
+    time: 1200
+    requirements: [
+      silicon/40
+      lead/30
+    ]
+  }
+]
+research: air-factory

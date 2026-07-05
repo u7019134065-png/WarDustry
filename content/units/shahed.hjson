@@ -1,0 +1,27 @@
+type: flying
+name: Shahed
+health: 120
+hitSize: 11
+speed: 3.2
+range: 150
+itemCapacity: 10
+engineSize: 1.5
+weapons: [
+  {
+    name: wardustry-shahed-warhead
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    reload: 120
+    mirror: false
+    bullet: {
+      type: BasicBulletType
+      damage: 90
+      speed: 2.7
+      lifetime: 45
+      width: 8
+      height: 8
+    }
+  }
+]
