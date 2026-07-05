@@ -1,0 +1,99 @@
+type: mech
+name: Jshon Ban
+health: 5000
+hitSize: 50
+armor: 20
+speed: 0.45
+rotateSpeed: 0.55
+itemCapacity: 40
+abilities: [
+  {
+    type: ForceFieldAbility
+    radius: 120
+    regen: 14
+    max: 3000
+    cooldown: 150
+  }
+  {
+    type: wardustry.EnemyStatusFieldAbility
+    effect: burning
+    duration: 2400
+    reload: 30
+    range: 120
+    applyEffect: none
+    activeEffect: none
+  }
+]
+weapons: [
+  {
+    name: wardustry-jshon-ban-cannon
+    x: 0
+    y: 18
+    top: true
+    rotate: true
+    mirror: false
+    reload: 45
+    recoil: 2.5
+    bullet: {
+      type: BasicBulletType
+      damage: 150
+      speed: 5.2
+      lifetime: 50
+      width: 10
+      height: 12
+    }
+  }
+  {
+    name: wardustry-jshon-ban-close-blast
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    mirror: false
+    display: false
+    noAttack: true
+    shootOnDeath: true
+    bullet: {
+      type: BasicBulletType
+      damage: 0
+      speed: 0
+      lifetime: 1
+      width: 1
+      height: 1
+      instantDisappear: true
+      collides: false
+      collidesTiles: false
+      collidesAir: false
+      collidesGround: false
+      splashDamage: 8000
+      splashDamageRadius: 320
+    }
+  }
+  {
+    name: wardustry-jshon-ban-wide-blast
+    x: 0
+    y: 0
+    top: true
+    rotate: false
+    mirror: false
+    display: false
+    noAttack: true
+    shootOnDeath: true
+    bullet: {
+      type: BasicBulletType
+      damage: 0
+      speed: 0
+      lifetime: 1
+      width: 1
+      height: 1
+      instantDisappear: true
+      collides: false
+      collidesTiles: false
+      collidesAir: false
+      collidesGround: false
+      splashDamage: 300
+      splashDamageRadius: 2000
+    }
+  }
+]
+research: jshon-ban-factory

@@ -1,0 +1,10 @@
+name: Irradiation
+color: 8cff3a
+description: Sickly uranium radiation that heavily slows movement.
+damage: 0
+speedMultiplier: 0.2
+healthMultiplier: 1.0
+reloadMultiplier: 1.0
+buildSpeedMultiplier: 1.0
+dragMultiplier: 1.0
+show: true

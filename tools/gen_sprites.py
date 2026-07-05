@@ -2,7 +2,7 @@
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
-ROOT = Path('/home/ubuntu/wardustry')
+ROOT = Path('/home/ubuntu/wardustry/assets')
 
 STEEL_DARK = (32, 36, 38, 255)
 STEEL = (58, 64, 68, 255)
@@ -318,7 +318,13 @@ def make_factory_base(size, variant='drone'):
     m = 8 if size <= 96 else 10
     d.rounded_rectangle((m, m + 4, size - m, size - m), radius=10, fill=STEEL_DARK, outline=BLACK, width=3)
     d.rectangle((m + 8, m + 12, size - m - 8, size - m - 10), fill=STEEL)
-    if variant == 'vehicle':
+    if variant == 'boss':
+        d.polygon([(m + 10, size - m - 12), (size // 2, m + 14), (size - m - 10, size - m - 12)], fill=OLIVE, outline=BLACK)
+        d.rectangle((m + 14, m + 18, size - m - 14, m + 34), fill=DARK_GREEN)
+        d.rectangle((m + 18, size // 2 - 10, size - m - 18, size // 2 + 8), fill=STEEL_LIGHT)
+        d.line((m + 10, size - m - 22, size - m - 10, size - m - 22), fill=SCARLET, width=5)
+        d.line((size // 2, m + 16, size // 2, size - m - 16), fill=SCARLET_DARK, width=4)
+    elif variant == 'vehicle':
         d.polygon([(m + 12, size - m - 10), (size // 2, m + 18), (size - m - 12, size - m - 10)], fill=OLIVE, outline=BLACK)
         d.rectangle((m + 14, m + 16, size - m - 14, m + 28), fill=DARK_GREEN)
         d.line((m + 12, size - m - 18, size - m - 12, size - m - 18), fill=SCARLET, width=4)
@@ -339,13 +345,207 @@ def make_factory_top(size, variant='drone'):
     d.polygon([(size // 2, m + 4), (size // 2 + 20, size // 2), (size // 2, size - m - 4), (size // 2 - 20, size // 2)], fill=OLIVE_LIGHT if variant == 'drone' else DARK_GREEN, outline=BLACK)
     d.rectangle((size // 2 - 3, size // 2 - 18, size // 2 + 3, size // 2 + 10), fill=SCARLET)
     d.polygon([(size // 2 - 10, size // 2 + 10), (size // 2 + 10, size // 2 + 10), (size // 2, size // 2 + 24)], fill=SCARLET_DARK)
-    if variant == 'vehicle':
+    if variant == 'boss':
+        d.rectangle((size // 2 - 28, size // 2 - 8, size // 2 + 28, size // 2 + 4), fill=STEEL_DARK)
+        d.polygon([(size // 2 - 22, size // 2 - 24), (size // 2 + 22, size // 2 - 24), (size // 2 + 30, size // 2 - 2), (size // 2 - 30, size // 2 - 2)], fill=OLIVE, outline=BLACK)
+        d.rectangle((size // 2 - 8, size // 2 - 18, size // 2 + 8, size // 2 - 4), fill=SCARLET)
+        d.ellipse((size // 2 - 14, size // 2 - 14, size // 2 + 14, size // 2 + 14), outline=SCARLET, width=3)
+    elif variant == 'vehicle':
         d.rectangle((size // 2 - 24, size // 2 - 6, size // 2 + 24, size // 2 + 2), fill=STEEL_DARK)
         d.polygon([(size // 2 - 18, size // 2 - 20), (size // 2 + 18, size // 2 - 20), (size // 2 + 26, size // 2 - 4), (size // 2 - 26, size // 2 - 4)], fill=OLIVE, outline=BLACK)
         d.rectangle((size // 2 - 6, size // 2 - 16, size // 2 + 6, size // 2 - 4), fill=SCARLET)
     return img
 
+def make_plasma_liquid(size=32):
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (5, 5, size - 5, size - 5), (64, 244, 255, 90), 5))
+    img = overlay(img, layer_glow(size, (8, 8, size - 8, size - 8), (255, 72, 200, 55), 4))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.ellipse((6, 7, size - 6, size - 7), fill=(23, 120, 148, 230), outline=(7, 20, 24, 255), width=2)
+    d.ellipse((10, 10, size - 10, size - 14), fill=(64, 244, 255, 140))
+    d.polygon([(c, 4), (size - 8, c), (c, size - 5), (8, c)], fill=(255, 68, 198, 120))
+    d.polygon([(c, 8), (size - 12, c), (c, size - 9), (12, c)], fill=(178, 255, 255, 120))
+    d.ellipse((c - 3, c - 3, c + 3, c + 3), fill=(255, 255, 255, 220))
+    return img
+
+def make_uranium_item(size=32):
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (4, 4, size - 4, size - 4), (136, 255, 42, 80), 4))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.polygon([(c, 3), (size - 7, c), (c, size - 4), (7, c)], fill=(82, 180, 32, 255), outline=BLACK)
+    d.polygon([(c, 7), (size - 11, c), (c, size - 8), (11, c)], fill=(170, 255, 74, 255))
+    d.regular_polygon((c, c, 4), 6, fill=BLACK)
+    d.regular_polygon((c, c, 7), 3, fill=(24, 28, 24, 255))
+    d.line((c, 7, c, size - 7), fill=BLACK, width=2)
+    d.line((7, c, size - 7, c), fill=BLACK, width=2)
+    return img
+
+def make_plasma_reactor_base(size=96):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    m = 10
+    d.rounded_rectangle((m, m, size - m, size - m), radius=12, fill=STEEL_DARK, outline=BLACK, width=3)
+    d.rectangle((m + 10, m + 12, size - m - 10, size - m - 14), fill=STEEL)
+    d.ellipse((size // 2 - 18, size // 2 - 18, size // 2 + 18, size // 2 + 18), fill=(23, 120, 148, 255), outline=BLACK, width=2)
+    d.ellipse((size // 2 - 10, size // 2 - 10, size // 2 + 10, size // 2 + 10), fill=(64, 244, 255, 255))
+    d.polygon([(size // 2, 18), (size // 2 + 14, size // 2), (size // 2, size - 18), (size // 2 - 14, size // 2)], fill=OLIVE, outline=BLACK)
+    for x in range(m + 12, size - m - 12, 16):
+        d.rectangle((x, size - m - 12, x + 4, size - m - 8), fill=SCARLET)
+    return img
+
+def make_plasma_reactor_top(size=96):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.rounded_rectangle((18, 18, size - 18, size - 18), radius=10, outline=(255, 72, 200, 255), width=3)
+    d.ellipse((c - 26, c - 26, c + 26, c + 26), outline=(64, 244, 255, 255), width=4)
+    d.polygon([(c, 10), (c + 10, c + 20), (c, c + 30), (c - 10, c + 20)], fill=SCARLET)
+    d.line((c, 18, c, size - 18), fill=(255, 255, 255, 180), width=2)
+    d.line((18, c, size - 18, c), fill=(255, 255, 255, 180), width=2)
+    return img
+
+def make_uranium_launcher(size=96):
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (10, 14, size - 10, size - 10), (136, 255, 42, 70), 6))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.rounded_rectangle((16, 20, size - 16, size - 14), radius=12, fill=STEEL_DARK, outline=BLACK, width=3)
+    d.polygon([(c, 12), (size - 22, 30), (size - 28, 46), (c, 38), (28, 46), (22, 30)], fill=OLIVE, outline=BLACK)
+    d.rectangle((c - 6, 18, c + 6, 56), fill=STEEL_LIGHT)
+    d.rectangle((c - 3, 10, c + 3, 20), fill=(136, 255, 42, 255))
+    d.rectangle((c - 12, 48, c + 12, 58), fill=SCARLET)
+    d.ellipse((c - 18, 30, c + 18, 66), outline=(136, 255, 42, 255), width=3)
+    return img
+
+def make_drill_base(size, color=OLIVE, powered=False):
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (8, 8, size - 8, size - 8), (136, 255, 42, 60) if powered else (118, 132, 78, 55), 6))
+    d = ImageDraw.Draw(img)
+    m = 6 if size <= 64 else 8
+    d.rounded_rectangle((m, m + 3, size - m, size - m), radius=8, fill=STEEL_DARK, outline=BLACK, width=2)
+    d.rectangle((m + 7, m + 12, size - m - 7, size - m - 10), fill=STEEL)
+    d.polygon([(size // 2, 10), (size - m - 10, size // 2), (size // 2, size - m - 10), (m + 10, size // 2)], fill=color, outline=BLACK)
+    d.rectangle((size // 2 - 4, 8, size // 2 + 4, size // 2 + 8), fill=SCARLET)
+    if powered:
+        d.rectangle((size // 2 - 12, size - m - 18, size // 2 + 12, size - m - 10), fill=(64, 244, 255, 255))
+    return img
+
+def make_drill_rotator(size, powered=False):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.ellipse((c - 18, c - 18, c + 18, c + 18), outline=(136, 255, 42, 255) if powered else OLIVE_LIGHT, width=4)
+    d.line((c, c - 18, c, c + 18), fill=SCARLET, width=3)
+    d.line((c - 18, c, c + 18, c), fill=SCARLET, width=3)
+    d.polygon([(c, 8), (c + 6, c), (c, c + 6), (c - 6, c)], fill=STEEL_LIGHT)
+    return img
+
+def make_drill_top(size, powered=False):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.polygon([(c, 8), (size - 12, c), (c, size - 8), (12, c)], fill=OLIVE_LIGHT if not powered else (136, 255, 42, 255), outline=BLACK)
+    d.rectangle((c - 4, 10, c + 4, size - 10), fill=SCARLET)
+    d.line((12, c, size - 12, c), fill=STEEL_LIGHT, width=2)
+    return img
+
+def make_tactical_drill(size=64, powered=False):
+    return make_drill_base(size, powered=powered)
+
+def make_tactical_riot_drill(size=96):
+    return make_drill_base(size, color=OLIVE_LIGHT, powered=True)
+
+def make_jshon_body(size=128):
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (16, 16, size - 16, size - 16), (64, 244, 255, 80), 8))
+    img = overlay(img, layer_glow(size, (24, 18, size - 24, size - 18), (255, 72, 200, 55), 7))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.polygon([(c, 10), (96, 26), (110, 52), (100, 92), (c, 116), (28, 92), (18, 52), (32, 26)], fill=STEEL_DARK, outline=BLACK)
+    d.polygon([(c, 20), (86, 32), (96, 54), (88, 84), (c, 102), (40, 84), (32, 54), (42, 32)], fill=STEEL)
+    d.polygon([(c, 12), (c + 12, 24), (c - 12, 24)], fill=(136, 255, 42, 255))
+    d.rectangle((c - 10, 88, c + 10, 112), fill=SCARLET_DARK)
+    d.rectangle((c - 32, 58, c + 32, 70), fill=OLIVE)
+    d.rectangle((c - 18, 48, c + 18, 58), fill=STEEL_LIGHT)
+    d.polygon([(24, 60), (14, 68), (18, 76), (30, 68)], fill=OLIVE, outline=BLACK)
+    d.polygon([(104, 60), (114, 68), (110, 76), (98, 68)], fill=OLIVE, outline=BLACK)
+    d.rectangle((54, 34, 74, 42), fill=(255, 72, 200, 255))
+    d.rectangle((58, 42, 70, 52), fill=(64, 244, 255, 255))
+    return img
+
+def make_jshon_cell(size=128):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    d.rounded_rectangle((c - 24, c - 20, c + 24, c + 20), radius=8, fill=WHITE, outline=(220, 198, 198, 255), width=3)
+    d.rounded_rectangle((c - 14, c - 12, c + 14, c + 12), radius=5, fill=(220, 198, 198, 255))
+    d.rectangle((c - 8, c - 30, c + 8, c - 20), fill=WHITE)
+    return img
+
+def make_jshon_weapon(size=32, kind='cannon'):
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    if kind == 'cannon':
+        d.rounded_rectangle((5, 12, size - 5, 20), radius=3, fill=STEEL_DARK, outline=BLACK)
+        d.rectangle((size - 10, 14, size - 3, 18), fill=SCARLET)
+        d.polygon([(8, 12), (16, 4), (24, 4), (28, 12)], fill=OLIVE, outline=BLACK)
+    elif kind == 'close':
+        d.ellipse((5, 5, size - 5, size - 5), fill=STEEL_DARK, outline=BLACK)
+        d.ellipse((10, 10, size - 10, size - 10), fill=SCARLET)
+    elif kind == 'wide':
+        d.rounded_rectangle((4, 10, size - 4, 22), radius=4, fill=STEEL_DARK, outline=BLACK)
+        d.rectangle((size - 7, 11, size - 3, 21), fill=SCARLET)
+        d.rectangle((7, 13, 12, 19), fill=(64, 244, 255, 255))
+    return img
+
+def make_ore_variant(index):
+    size = 32
+    img = canvas(size)
+    img = overlay(img, layer_glow(size, (2, 2, size - 2, size - 2), (136, 255, 42, 35), 3))
+    d = ImageDraw.Draw(img)
+    c = size // 2
+    wobble = index * 2
+    d.polygon([(c, 2 + index), (size - 6 - wobble, c - 1), (c + 1, size - 3), (6 + wobble, c + 1)], fill=(72, 160, 28, 255), outline=BLACK)
+    d.polygon([(c, 6 + index), (size - 10 - wobble, c), (c + 1, size - 7), (10 + wobble, c)], fill=(170, 255, 74, 255))
+    d.rectangle((c - 2, 6, c + 2, 26), fill=BLACK)
+    d.rectangle((6, c - 2, 26, c + 2), fill=BLACK)
+    d.ellipse((12 - index, 12 - index, 20 + index, 20 + index), fill=(40, 66, 20, 255))
+    return img
+
+def make_armored_conveyor_frame(blend, frame):
+    size = 32
+    img = canvas(size)
+    d = ImageDraw.Draw(img)
+    # steel shell
+    d.rounded_rectangle((3, 4, 29, 28), radius=5, fill=STEEL_DARK, outline=BLACK, width=2)
+    # reinforce depending on blend bit
+    if blend & 1:
+        d.rectangle((4, 5, 8, 27), fill=OLIVE)
+    if blend & 2:
+        d.rectangle((24, 5, 28, 27), fill=OLIVE)
+    if blend & 4:
+        d.rectangle((5, 4, 27, 8), fill=OLIVE_LIGHT)
+    # central belt and motion
+    for x in range(10, 23, 5):
+        d.rectangle((x, 12, x + 3, 20), fill=STEEL_LIGHT)
+    shift = frame % 4
+    d.rectangle((8 + shift, 14, 24 + shift, 18), fill=SCARLET)
+    d.line((7, 16, 25, 16), fill=BLACK, width=1)
+    d.rectangle((6, 9, 26, 11), fill=STEEL_LIGHT)
+    d.rectangle((6, 21, 26, 23), fill=STEEL_LIGHT)
+    d.ellipse((12, 8, 20, 24), outline=(64, 244, 255, 120), width=1)
+    return img
+
 def main():
+    save(make_plasma_liquid(), 'sprites/liquids/plasma-energy.png')
+    save(make_uranium_item(), 'sprites/items/uranium.png')
+    save(make_ore_variant(0), 'sprites/blocks/ore-uranium1.png')
+    save(make_ore_variant(1), 'sprites/blocks/ore-uranium2.png')
+    save(make_ore_variant(2), 'sprites/blocks/ore-uranium3.png')
+
     save(make_shahed(), 'sprites/units/shahed.png')
     save(cell_drone(64, 12, 9), 'sprites/units/shahed-cell.png')
     save(weapon_icon(24, 'warhead'), 'sprites/units/weapons/wardustry-shahed-warhead.png')
@@ -384,6 +584,30 @@ def main():
 
     save(make_factory_base(96, 'vehicle'), 'sprites/blocks/vehicle-factory.png')
     save(make_factory_top(96, 'vehicle'), 'sprites/blocks/vehicle-factory-top.png')
+
+    save(make_plasma_reactor_base(96), 'sprites/blocks/plasma-reactor.png')
+    save(make_plasma_reactor_top(96), 'sprites/blocks/plasma-reactor-top.png')
+    save(make_uranium_launcher(96), 'sprites/blocks/uranium-launcher.png')
+
+    save(make_drill_base(64), 'sprites/blocks/tactical-drill.png')
+    save(make_drill_rotator(64), 'sprites/blocks/tactical-drill-rotator.png')
+    save(make_drill_top(64), 'sprites/blocks/tactical-drill-top.png')
+
+    save(make_drill_base(96, powered=True), 'sprites/blocks/tactical-bore.png')
+    save(make_drill_rotator(96, powered=True), 'sprites/blocks/tactical-bore-rotator.png')
+    save(make_drill_top(96, powered=True), 'sprites/blocks/tactical-bore-top.png')
+
+    save(make_factory_base(128, 'boss'), 'sprites/blocks/jshon-ban-factory.png')
+    save(make_factory_top(128, 'boss'), 'sprites/blocks/jshon-ban-factory-top.png')
+    save(make_jshon_body(128), 'sprites/units/jshon-ban.png')
+    save(make_jshon_cell(128), 'sprites/units/jshon-ban-cell.png')
+    save(make_jshon_weapon(32, 'cannon'), 'sprites/units/weapons/wardustry-jshon-ban-cannon.png')
+    save(make_jshon_weapon(32, 'close'), 'sprites/units/weapons/wardustry-jshon-ban-close-blast.png')
+    save(make_jshon_weapon(32, 'wide'), 'sprites/units/weapons/wardustry-jshon-ban-wide-blast.png')
+
+    for blend in range(7):
+        for frame in range(4):
+            save(make_armored_conveyor_frame(blend, frame), f'sprites/blocks/armored-conveyor-{blend}-{frame}.png')
 
 if __name__ == '__main__':
     main()

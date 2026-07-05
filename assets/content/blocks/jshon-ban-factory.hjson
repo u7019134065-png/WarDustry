@@ -1,0 +1,32 @@
+type: UnitFactory
+name: Jshon Ban Factory
+category: units
+size: 4
+health: 780
+requirements: [
+  copper/260
+  lead/220
+  silicon/180
+  titanium/120
+  thorium/60
+]
+consumes: {
+  power: 8
+  items: [
+    silicon/60
+    titanium/30
+  ]
+}
+plans: [
+  {
+    unit: wardustry-jshon-ban
+    time: 3600
+    requirements: [
+      silicon/120
+      titanium/80
+      thorium/60
+      phase-fabric/20
+    ]
+  }
+]
+research: ground-factory

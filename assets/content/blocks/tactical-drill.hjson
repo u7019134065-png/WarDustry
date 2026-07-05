@@ -1,0 +1,14 @@
+type: Drill
+name: Tactical Drill
+category: production
+size: 2
+health: 220
+requirements: [
+  copper/60
+  lead/50
+  silicon/35
+  titanium/20
+]
+tier: 3
+drillTime: 180
+research: pneumatic-drill

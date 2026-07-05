@@ -1,0 +1,33 @@
+type: ItemTurret
+name: Uranium Launcher
+category: turret
+size: 3
+health: 640
+requirements: [
+  copper/150
+  lead/130
+  silicon/100
+  titanium/60
+]
+range: 260
+reload: 60
+rotateSpeed: 6
+recoil: 2.4
+inaccuracy: 0.5
+consumes: {
+  power: 2.2
+}
+ammoTypes: {
+  wardustry-uranium: {
+    type: BasicBulletType
+    damage: 62
+    speed: 5.2
+    lifetime: 48
+    width: 9
+    height: 11
+    status: wardustry-irradiation
+    statusDuration: 600
+    splashDamage: 0
+  }
+}
+research: salvo

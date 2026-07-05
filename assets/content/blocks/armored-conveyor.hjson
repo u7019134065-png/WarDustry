@@ -1,0 +1,13 @@
+type: ArmoredConveyor
+name: Armored Conveyor
+category: distribution
+size: 1
+health: 180
+requirements: [
+  plastanium/1
+  thorium/1
+  metaglass/1
+]
+speed: 0.08
+displayedSpeed: 11
+research: plastanium-conveyor

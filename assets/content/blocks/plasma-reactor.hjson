@@ -1,0 +1,25 @@
+type: GenericCrafter
+name: Plasma Reactor
+category: crafting
+size: 3
+health: 480
+requirements: [
+  copper/140
+  lead/120
+  silicon/100
+  titanium/80
+]
+consumes: {
+  power: 4.5
+  items: [
+    silicon/25
+    titanium/20
+  ]
+}
+outputLiquid: {
+  liquid: wardustry-plasma-energy
+  amount: 0.16
+}
+craftTime: 90
+liquidCapacity: 40
+research: silicon-smelter

@@ -1,0 +1,15 @@
+name: Plasma Energy
+color: 40f4ff
+barColor: 79ffff
+lightColor: 5cf7ffcc
+description: A bright cyan-magenta energy fluid used as an advanced reactor output.
+temperature: 0.88
+heatCapacity: 0.18
+viscosity: 0.28
+explosiveness: 0.0
+flammability: 0.0
+blockReactive: false
+coolant: false
+moveThroughBlocks: false
+incinerable: false
+gas: false

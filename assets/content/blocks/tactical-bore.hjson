@@ -1,0 +1,17 @@
+type: Drill
+name: Tactical Bore
+category: production
+size: 3
+health: 420
+requirements: [
+  copper/120
+  lead/100
+  silicon/90
+  titanium/70
+]
+tier: 5
+drillTime: 95
+consumes: {
+  power: 1.8
+}
+research: tactical-drill
