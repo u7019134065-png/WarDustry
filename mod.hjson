@@ -17,8 +17,8 @@ author: "JSHON"
 # Description rendered in the in-game mod manager.
 # The localized version is applied at runtime from the bundles
 # (keys mod.wardustry.displayName / mod.wardustry.description) by
-# scripts/main.js, so this English text is only the fallback.
-description: "WarDustry is a military-tech content pack for Mindustry, focused on armored vehicles, heavy weaponry and modern warfare machinery. This is the base scaffold: metadata, folder structure and bilingual documentation are in place, with content to be added in future updates."
+# the Java mod entrypoint, so this English text is only the fallback.
+description: "WarDustry is a military-tech content pack for Mindustry: loitering drones (Shahed and a kamikaze drone), plus recon, bomber, missile, gunship and interceptor drones, ground vehicles (jeep and bus), and the drone and vehicle factories that build them. Built as a Java mod."
 
 # Semantic-ish version of the mod.
 version: "0.1"
@@ -26,6 +26,10 @@ version: "0.1"
 # Minimum game build required. Must be a number greater than 105.
 # 146 corresponds to the stable v7 line.
 minGameVersion: 146
+
+# This is a Java mod and the main class is bundled in the desktop jar.
+main: "wardustry.WarDustryMod"
+java: true
 
 # Other mods this one depends on (by their internal name).
 dependencies: []

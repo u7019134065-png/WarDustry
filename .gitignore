@@ -7,6 +7,8 @@ Thumbs.db
 # Build artifacts / packaged mod
 *.zip
 !/**/sprites/**/*.zip
+build/
+.gradle/
 
 # Python (sprite tooling, if added later)
 __pycache__/

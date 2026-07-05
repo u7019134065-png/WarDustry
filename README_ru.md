@@ -5,8 +5,8 @@
 **Набор контента о военной технике для [Mindustry](https://mindustrygame.github.io/) — бронемашины, тяжёлое вооружение и техника современной войны.**
 
 [![Game](https://img.shields.io/badge/Mindustry-v146-orange)](https://github.com/Anuken/Mindustry/releases)
-[![Type](https://img.shields.io/badge/тип-JSON%2FHjson%20контент--мод-blue)]()
-[![Status](https://img.shields.io/badge/статус-каркас%20(контента%20пока%20нет)-lightgrey)]()
+[![Type](https://img.shields.io/badge/тип-Java--мод%20(Gradle)-blue)]()
+[![Build](https://img.shields.io/badge/сборка-gradlew%20jar-success)]()
 [![License](https://img.shields.io/badge/лицензия-MIT-green)](LICENSE)
 
 🌍 **Языки:** [English](README.md) · Русский (этот файл)
@@ -17,58 +17,61 @@
 
 ## 📖 О моде
 
-**WarDustry** — разрабатываемый контент-мод для Mindustry на тему **военной техники**: танки и бронемашины, артиллерия, автопушки, ракетные системы и заводы, которые их производят.
+**WarDustry** — мод для Mindustry на тему **военной техники**: барражирующие дроны, ганшипы, наземная техника и заводы, которые их производят. Поставляется как **Java-мод** (собирается через Gradle), при этом контент остаётся data-driven (Hjson + PNG).
 
-> ⚠️ **Сейчас репозиторий — это каркас.** В нём есть только метаданные мода, структура папок и двуязычная документация. **Блоки, предметы, жидкости и юниты пока не добавлены** — контент появится в будущих обновлениях.
+## 🚁 Контент
+
+| Категория | Контент |
+| --- | --- |
+| 🛩️ Воздушные дроны | **Шахед** (барражирующий боеприпас), **Дрон-камикадзе**, **Разведдрон**, **Дрон-бомбардировщик**, **Ракетный дрон**, **Дрон-ганшип**, **Дрон-перехватчик** |
+| 🚙 Наземная техника | **Джип** (быстрая разведмашина), **Автобус** (бронетранспортёр) |
+| 🏭 Заводы | **Завод беспилотников** (строит воздушные дроны), **Завод техники** (строит наземную технику) |
+
+Все названия и описания переведены на английский и русский.
 
 ## 📂 Структура проекта
 
 ```
 wardustry/
-├── mod.hjson              # Метаданные мода (имя, версия, minGameVersion…)
-├── README.md              # Документация на английском
-├── README_ru.md           # Документация на русском (этот файл)
-├── LICENSE                # Лицензия MIT
-├── bundles/
-│   ├── bundle.properties      # Английские названия/описания
-│   └── bundle_ru.properties   # Русские названия/описания
-├── scripts/
-│   └── main.js            # Локализует имя/описание самого мода
-├── content/               # Описания контента (пока пусто)
-│   ├── items/
-│   ├── liquids/
-│   ├── blocks/
-│   └── units/
-└── sprites/               # Спрайты 32-bit RGBA PNG (пока пусто)
-    ├── items/
-    ├── liquids/
-    ├── blocks/
-    └── units/
-        └── weapons/
+├── mod.hjson              # Метаданные (главный класс, java:true, minGameVersion…)
+├── build.gradle          # Сборка Gradle (зависит от API Mindustry v146)
+├── settings.gradle       # rootProject.name = WarDustry
+├── gradlew / gradlew.bat # Обёртка Gradle
+├── gradle/wrapper/       # Jar обёртки + properties
+├── src/
+│   └── wardustry/
+│       └── WarDustryMod.java   # Java-точка входа (локализует имя/описание мода)
+├── assets/               # Всё, что упаковывается в корень jar
+│   ├── icon.png
+│   ├── bundles/          # bundle.properties (EN) + bundle_ru.properties (RU)
+│   ├── content/          # Контент Hjson: units/ и blocks/
+│   └── sprites/          # Спрайты 32-bit RGBA PNG (blocks/, units/, units/weapons/)
+├── tools/                # gen_sprites.py / gen_icon.py (генераторы графики)
+├── README.md             # Документация на английском
+├── README_ru.md          # Документация на русском (этот файл)
+└── LICENSE               # Лицензия MIT
 ```
-
-## 🧭 Планируемый контент
-
-Пока ничего не реализовано. Направление будущих обновлений:
-
-| Категория | Идеи |
-| --- | --- |
-| 🪖 Ресурсы | Сталь, порох, сплавы и другие военные материалы |
-| 🏭 Производство | Литейные и заводы боеприпасов |
-| 🔫 Турели | Автопушки, артиллерия, ракетные и зенитные батареи |
-| 🚚 Юниты | Танки, бронетранспортёры, штурмовики и техника поддержки |
-| ⚡ Энергия | Генераторы для питания военной машины |
 
 ## 🛠️ Как устроен мод
 
-- **Чистый контент-мод на данных** — контент описывается в файлах `.hjson`/`.json` в `content/`, а спрайты `.png` лежат в `sprites/`. Компиляция Java не нужна.
-- **Локализация имени/описания мода** — Mindustry берёт имя и описание самого мода прямо из `mod.hjson` и **не** переводит их через bundle-файлы. `scripts/main.js` обходит это: при загрузке он подставляет `mod.wardustry.displayName` / `mod.wardustry.description` из активного языкового bundle, поэтому в русском клиенте текст будет на русском, иначе — на английском.
-- **Двуязычные bundle-файлы** — строки контента (когда он появится) размещаются в `bundles/bundle.properties` (английский) и `bundles/bundle_ru.properties` (русский).
+- **Java-мод с data-driven контентом** — мод поставляется как собранный Gradle Java-jar (`mod.hjson` содержит `java: true` + `main: wardustry.WarDustryMod`), но блоки и юниты по-прежнему описаны в Hjson в `assets/content/`, а графика `.png` — в `assets/sprites/`.
+- **Локализация имени/описания мода** — Mindustry берёт имя и описание самого мода прямо из `mod.hjson` и **не** переводит их через bundle-файлы. `WarDustryMod.init()` подставляет `mod.wardustry.displayName` / `mod.wardustry.description` из активного языкового bundle, поэтому в русском клиенте текст будет на русском, иначе — на английском.
+- **Двуязычные bundle-файлы** — строки контента лежат в `assets/bundles/bundle.properties` (английский) и `bundle_ru.properties` (русский).
+
+## 🔨 Сборка из исходников
+
+Нужен **JDK 17**. Из корня репозитория:
+
+```bash
+./gradlew jar        # -> build/libs/WarDustryDesktop.jar (десктоп)
+```
+
+Для кроссплатформенного jar (десктоп + Android) установите Android SDK (задайте `ANDROID_HOME`, `d8` в `PATH`) и выполните `./gradlew deploy`.
 
 ## 📦 Установка
 
-1. Скачайте репозиторий как `.zip` (или склонируйте).
-2. Положите папку/архив в папку модов Mindustry:
+1. Соберите jar (см. выше) или скачайте готовый `WarDustryDesktop.jar`.
+2. Положите `.jar` в папку модов Mindustry:
    - **Steam:** `steam/steamapps/common/Mindustry/saves/mods/`
    - **Windows (не Steam):** `%appdata%/Mindustry/mods/`
    - **Linux:** `~/.local/share/Mindustry/mods/`
