@@ -23,11 +23,15 @@
 
 | Category | Content |
 | --- | --- |
-| 🛩️ Air drones | **Shahed** (loitering munition), **Kamikaze Drone**, **Recon Drone**, **Bomber Drone**, **Missile Drone**, **Gunship Drone**, **Interceptor Drone** |
-| 🚙 Ground vehicles | **Jeep** (fast scout car), **Bus** (armored transport) |
-| 🏭 Factories | **Drone Factory** (builds the air drones), **Vehicle Factory** (builds the ground vehicles) |
+| 🛩️ Air drones | **Shahed** (loitering munition), **Kamikaze Drone**, **Recon**, **Bomber**, **Missile**, **Gunship**, **Interceptor**, **EMP** & **Scout** drones |
+| 🚙 Ground vehicles | **Jeep**, **Bus** (armored transport), **Scout Vehicle**, **APC**, **Artillery Vehicle**, **MBT**, **Heavy Gunship** |
+| 👑 Boss unit | **Jshon Ban** — 5000 HP + a 3000 HP force-field shield, burns enemies inside the shield, and on death detonates a tiered blast (8000 dmg point-blank, 300 dmg out to a 250-tile radius) |
+| 🔫 Turrets | Autocannon, Flak Gun, Railgun, Missile Battery, Mortar, Tesla, Laser, **Plasma Turret** and the **Uranium Launcher** (inflicts the custom **Irradiation** slow) |
+| ☢️ Resources | **Uranium** ore + **Plasma Energy** liquid (a new "energy" fluid), **Steel**, **Shell** |
+| 🏭 Production & power | Drone/Vehicle factories, tactical drills, steel smelter, munitions factory, **Plasma Reactor**, **Plasma Turbine**, diesel/solar/battery power |
+| 🧱 Logistics & defense | Armored conveyor/router/junction/bridge, steel & reinforced walls, blast door, repair / shield / overdrive projectors |
 
-All names and descriptions are localized in English and Russian.
+Content spans **40+ blocks and units**. All names and descriptions are localized in **English, Russian and Ukrainian**.
 
 ## 📂 Project structure
 
